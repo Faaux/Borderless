@@ -1,0 +1,7 @@
+﻿BasedOnStyle: Google
+BreakBeforeBraces: Allman
+IndentWidth: 4
+ColumnLimit: 120
+SortIncludes: 'true'
+AllowShortIfStatementsOnASingleLine: 'false'
+NamespaceIndentation: None
