@@ -2,6 +2,12 @@
   "name": "borderless-project",
   "version": "1.0.0",
   "dependencies": [
-    "fmt"
+    "fmt",
+    "glfw3",
+    "glew",
+    {
+      "name": "imgui",
+      "features": [ "glfw-binding", "docking-experimental", "opengl3-binding" ]
+    }
   ]
 }

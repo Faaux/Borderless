@@ -11,17 +11,20 @@ message(STATUS ${CMAKE_CXX_FLAGS})
 
 # Third Party Libs
 find_package(fmt CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
+find_package(GLEW REQUIRED)
 
-file(GLOB TEMPLATE_SOURCES CONFIGURE_DEPENDS "src/borderless/*.cpp")
-file(GLOB TEMPLATE_INCLUDES CONFIGURE_DEPENDS "include/borderless/*.h")
+file(GLOB BORDERLESS_SOURCES CONFIGURE_DEPENDS "src/borderless/*.cpp")
+file(GLOB BORDERLESS_INCLUDES CONFIGURE_DEPENDS "include/borderless/*.h")
 
 add_library(borderless_base OBJECT
-    ${TEMPLATE_SOURCES}
-    ${TEMPLATE_INCLUDES}
+    ${BORDERLESS_SOURCES}
+    ${BORDERLESS_INCLUDES}
 )
-target_link_libraries(borderless_base PUBLIC fmt::fmt-header-only)
+target_link_libraries(borderless_base PUBLIC fmt::fmt-header-only glfw imgui::imgui GLEW::GLEW)
 
 
 
-add_executable(borderless src/main.cpp)
+add_executable(borderless WIN32 src/main.cpp src/resource.rc)
 target_link_libraries(borderless PRIVATE borderless_base)
